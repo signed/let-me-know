@@ -10,6 +10,10 @@ test('taetigkeitsschluessel', async () => {
   ).toEqual('Schlüsselverzeichnis 2010 – Stand 03/2024 (2,3 MB)')
 })
 
+test('fail', () => {
+  expect(false).toEqual(true)
+})
+
 const latestVersionAt = async (extractor: ($: CheerioAPI) => string): Promise<string> => {
   let api = await fetchAndParsePage(page)
   if (api === 'failed') {

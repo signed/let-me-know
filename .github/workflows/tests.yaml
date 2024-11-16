@@ -1,0 +1,22 @@
+name: Tests
+
+# no permissions https://docs.github.com/en/actions/writing-workflows/choosing-what-your-workflow-does/controlling-permissions-for-github_token#defining-access-for-the-github_token-permissions
+permissions: {}
+
+on:
+  workflow_dispatch
+
+jobs:
+  Tests:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - run: pnpm install --frozen-lockfile
+        shell: bash
+      - name: Start Beta-Release
+        run: pnpm test
